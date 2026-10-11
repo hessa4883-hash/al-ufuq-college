@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية الأفق | Al-Ufuq College - بوابة التميز الأكاديمي والنشاط الطلابي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Tajawal', 'Cairo', sans-serif; box-sizing: border-box; }
+        body { background-color: #f8fafc; color: #0f172a; direction: rtl; text-align: right; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.1);
+        }
+        .motivational-pill {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+            border: 1px solid #bfdbfe;
+            animation: pulse-glow 3s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.15); }
+            100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1), transparent 40%),
+                        linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+        }
+        .nav-btn.active {
+            color: #2563eb;
+            background-color: #eff6ff;
+            font-weight: 800;
+        }
+        .chat-widget-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 9999;
+            box-shadow: 0 10px 25px -3px rgba(37, 99, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+        .chat-box-popup {
+            position: fixed;
+            bottom: 96px;
+            left: 24px;
+            width: 360px;
+            max-width: calc(100vw - 48px);
+            height: 520px;
+            z-index: 9998;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+        @media print {
+            header, footer, .no-print, .chat-widget-btn, .chat-box-popup { display: none !important; }
+            body { background: white !important; }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- شريط العبارات التشجيعية العلوي (Rotating Motivational Banner) -->
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-white text-xs sm:text-sm py-2 px-4 shadow-sm border-b border-blue-700/50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2 font-medium">
+                <span class="inline-flex items-center justify-center bg-amber-400 text-blue-950 px-2.5 py-0.5 rounded-full text-xs font-black shadow-sm animate-pulse">
+                    <i class="fa-solid fa-sparkles ml-1"></i> إلهام الأفق
+                </span>
+                <span id="rotating-quote" class="font-bold text-amber-200 transition-opacity duration-300">
+                    طموحك يبدأ من هنا نحو آفاق لا حدود لها 🚀
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-blue-200">
+                <span class="hidden md:inline-flex items-center gap-1">
+                    <i class="fa-solid fa-graduation-cap text-amber-400"></i> القبول والتسجيل للعام 2026/2027 متاح الآن
+                </span>
+                <span class="flex items-center gap-1">
+                    <i class="fa-solid fa-phone-volume text-emerald-400"></i> هاتف الاستعلامات: 777000111
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- رأس الصفحة وقائمة التنقل (Navbar) -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- الشعار -->
+                <a href="#home" onclick="showTab('home')" class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white text-2xl shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-1">
+                            <span>كُـلّـيـة</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">الأُفُــق</span>
+                        </div>
+                        <div class="text-[11px] text-slate-400 font-semibold tracking-wider uppercase">Al-Ufuq College</div>
+                    </div>
+                </a>
+
+                <!-- روابط التنقل الرئيسية -->
+                <nav class="hidden xl:flex items-center gap-1 text-xs sm:text-sm font-bold">
+                    <button onclick="showTab('home')" id="nav-home" class="nav-btn active px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-house-chimney ml-1 text-xs opacity-70"></i> الرئيسية
+                    </button>
+                    <button onclick="showTab('admissions')" id="nav-admissions" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-file-pen ml-1 text-xs opacity-70"></i> التقديمات
+                    </button>
+                    <button onclick="showTab('admission-results')" id="nav-admission-results" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-id-card-clip ml-1 text-xs opacity-70"></i> نتائج القبول
+                    </button>
+                    <button onclick="showTab('departments')" id="nav-departments" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-shapes ml-1 text-xs opacity-70"></i> الأقسام (6)
+                    </button>
+                    <button onclick="showTab('calendar')" id="nav-calendar" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-regular fa-calendar-days ml-1 text-xs opacity-70"></i> التقويم الدراسي
+                    </button>
+                    <button onclick="showTab('exam-results')" id="nav-exam-results" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-award ml-1 text-xs opacity-70"></i> نتائج الامتحانات
+                    </button>
+                    <button onclick="showTab('activities')" id="nav-activities" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-futbol ml-1 text-xs opacity-70"></i> النشاط الطلابي
+                    </button>
+                    <button onclick="showTab('inquiries')" id="nav-inquiries" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-circle-question ml-1 text-xs opacity-70"></i> الاستعلامات
+                    </button>
+                    <button onclick="showTab('complaints')" id="nav-complaints" class="nav-btn px-3.5 py-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all">
+                        <i class="fa-solid fa-envelope-open-text ml-1 text-xs opacity-70"></i> الشكاوى والمقترحات
+                    </button>
+                </nav>
+
+                <!-- أزرار الإجراءات السريعة والدخول -->
+                <div class="hidden sm:flex items-center gap-2">
+                    <button onclick="showTab('portal')" class="inline-flex items-center gap-2 text-slate-700 hover:text-blue-600 font-bold text-xs px-3.5 py-2.5 rounded-xl hover:bg-slate-100 transition-all">
+                        <i class="fa-solid fa-right-to-bracket text-blue-600"></i> بوابات الدخول
+                    </button>
+                    <button onclick="showTab('admissions')" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow-md hover:scale-105 transition-all">
+                        <i class="fa-solid fa-paper-plane"></i> قدّم الآن
+                    </button>
+                </div>
+
+                <!-- زر القائمة للجوال -->
+                <div class="flex xl:hidden items-center">
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl text-slate-700 hover:bg-slate-100">
+                        <i class="fa-solid fa-bars-staggered text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قائمة الجوال المنسدلة -->
+        <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-2 shadow-xl">
+            <button onclick="showTab('home')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">الرئيسية</button>
+            <button onclick="showTab('admissions')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">التقديمات لبداية العام</button>
+            <button onclick="showTab('admission-results')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">عرض نتائج القبول</button>
+            <button onclick="showTab('departments')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">الأقسام العلمية والأدبية</button>
+            <button onclick="showTab('calendar')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">التقويم الدراسي</button>
+            <button onclick="showTab('exam-results')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">نتائج الامتحانات</button>
+            <button onclick="showTab('activities')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">النشاط الطلابي والبطولات</button>
+            <button onclick="showTab('inquiries')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">استعلامات الكلية</button>
+            <button onclick="showTab('complaints')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-slate-700 hover:bg-blue-50">الشكاوى والمقترحات</button>
+            <button onclick="showTab('portal')" class="w-full text-right py-2 px-3 rounded-lg font-bold text-sm text-blue-600 bg-blue-50">بوابات الدخول (طالب / إدارة)</button>
+        </div>
+    </header>
+
+    <!-- منطقة التنبيهات -->
+    <div id="toast-container" class="fixed top-24 right-4 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- المحتوى الرئيسي (Dynamic Tabs) -->
+    <main class="flex-grow">
+
+        <!-- ======================= 1. الصفحة الرئيسية ======================= -->
+        <section id="tab-home" class="tab-content block">
+            <!-- Hero -->
+            <div class="relative hero-gradient py-16 lg:py-24 border-b border-slate-200/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full motivational-pill text-blue-900 font-bold text-xs sm:text-sm shadow-sm">
+                                <span class="flex h-2.5 w-2.5 relative">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                </span>
+                                <span>باب القبول والتسجيل للعام الجامعي 2026/2027 مفتوح الآن! ✨</span>
+                            </div>
+
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                                أهلاً بك في <br>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-l from-blue-700 via-indigo-600 to-cyan-600">كُـلّـيـة الأُفُــق الأكاديمية</span>
+                            </h1>
+
+                            <div class="p-4 rounded-2xl bg-white/80 border border-blue-100 shadow-sm backdrop-blur-sm">
+                                <p class="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+                                    <span class="text-2xl text-amber-500 font-black">“</span>
+                                    طموحك يبدأ من هنا نحو آفاق رحبة من التميز والإبداع! نمنحك تعليماً استثنائياً يجمع بين المعرفة العميقة، المهارات السريرية والتطبيقية، والأنشطة الطلابية الحماسية.
+                                    <span class="text-2xl text-amber-500 font-black">”</span>
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                                <button onclick="showTab('admissions')" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-extrabold text-sm shadow-xl shadow-blue-500/25 hover:scale-105 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-file-pen"></i> التقديم لبداية العام
+                                </button>
+                                <button onclick="showTab('admission-results')" class="px-7 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-extrabold text-sm border border-slate-200 shadow-sm hover:scale-105 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-id-card-clip text-blue-600"></i> استعلام نتائج القبول
+                                </button>
+                                <button onclick="showTab('exam-results')" class="px-6 py-4 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-xs border border-amber-200 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-square-poll-vertical text-amber-600"></i> نتائج الامتحانات
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 pt-4 max-w-lg mx-auto lg:mx-0">
+                                <div class="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                                    <div class="text-2xl font-black text-blue-600">6</div>
+                                    <div class="text-xs font-bold text-slate-500">تخصصات رائدة</div>
+                                </div>
+                                <div class="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                                    <div class="text-2xl font-black text-emerald-600">100%</div>
+                                    <div class="text-xs font-bold text-slate-500">اعتماد رسمي</div>
+                                </div>
+                                <div class="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                                    <div class="text-2xl font-black text-amber-600">20+</div>
+                                    <div class="text-xs font-bold text-slate-500">نشاط ومبادرة</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- البطاقة التفاعلية -->
+                        <div class="lg:col-span-5">
+                            <div class="glass-card rounded-3xl p-6 border border-slate-200 shadow-xl space-y-3">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl">🎓</div>
+                                        <div>
+                                            <h4 class="font-extrabold text-slate-900 text-base">بوابة الطالب الذكية</h4>
+                                            <p class="text-xs text-slate-500">كلية الأفق - ريادة وإلهام</p>
+                                        </div>
+                                    </div>
+                                    <span class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold">نشط 🟢</span>
+                                </div>
+
+                                <button onclick="showTab('departments')" class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-100 transition-all text-right">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm"><i class="fa-solid fa-stethoscope"></i></span>
+                                        <div>
+                                            <div class="text-sm font-bold text-slate-800">الأقسام العلمية والأدبية</div>
+                                            <div class="text-[11px] text-slate-500">تمريض، مختبرات، تقنية، إدارة، إنجليزي، محاسبة</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-left text-xs text-slate-400"></i>
+                                </button>
+
+                                <button onclick="showTab('calendar')" class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-100 transition-all text-right">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm"><i class="fa-regular fa-calendar-check"></i></span>
+                                        <div>
+                                            <div class="text-sm font-bold text-slate-800">التقويم الأكاديمي 2026/2027</div>
+                                            <div class="text-[11px] text-slate-500">مواعيد التقديم وبداية الدراسة والامتحانات</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-left text-xs text-slate-400"></i>
+                                </button>
+
+                                <button onclick="showTab('activities')" class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-amber-50 border border-slate-100 transition-all text-right">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-sm"><i class="fa-solid fa-trophy"></i></span>
+                                        <div>
+                                            <div class="text-sm font-bold text-slate-800">بطولة كرة القدم والمبادرات</div>
+                                            <div class="text-[11px] text-slate-500">كأس الأفق، الأيام الثقافية، والحملات الصحية</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-left text-xs text-slate-400"></i>
+                                </button>
+
+                                <button onclick="showTab('complaints')" class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 hover:bg-rose-50 border border-slate-100 transition-all text-right">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-sm"><i class="fa-solid fa-comments"></i></span>
+                                        <div>
+                                            <div class="text-sm font-bold text-slate-800">الشكاوى والمقترحات</div>
+                                            <div class="text-[11px] text-slate-500">صوتك مسموع مباشرة لدى إدارة الكلية</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-left text-xs text-slate-400"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الأقسام الستة المختصرة في الرئيسية -->
+            <div class="py-16 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-blue-600 font-extrabold text-xs uppercase tracking-widest bg-blue-100 px-3.5 py-1.5 rounded-full">تخصصات المستقبل</span>
+                        <h2 class="text-3xl font-black text-slate-900 mt-2">مجالات كلية الأفق الستة المعتمدة</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="home-depts-grid">
+                        <!-- تُبنى ديناميكياً بالجافاسكربت -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 2. صفحة التقديمات للكلية ======================= -->
+        <section id="tab-admissions" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-800 font-black text-xs mb-2">العام الجامعي 2026/2027</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900">استمارة التقديم الإلكتروني للكلية</h2>
+                    <p class="text-slate-600 text-sm mt-2">سجّل بياناتك بدقة لتحصل فوراً على رقم استمارة القبول ومتابعة حالتك الأكاديمية.</p>
+                </div>
+
+                <!-- نتيجة التقديم إن وجدت -->
+                <div id="admission-success-card" class="hidden max-w-2xl mx-auto glass-card rounded-3xl p-8 mb-10 border-2 border-emerald-400 bg-white shadow-xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-3">✓</div>
+                    <h3 class="text-2xl font-black text-slate-900">تهانينا! تم تسجيل طلبك بنجاح 🎉</h3>
+                    <div class="my-5 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-sm space-y-2">
+                        <div>رقم استمارة التقديم: <b id="succ-app-no" class="text-blue-600 font-mono text-lg font-black"></b></div>
+                        <div>الاسم: <b id="succ-app-name"></b></div>
+                        <div>القسم المطلوب: <b id="succ-app-dept"></b></div>
+                        <div>الحالة المبدئية: <span class="bg-emerald-100 text-emerald-800 px-3 py-0.5 rounded-full font-bold text-xs">مقبول مبدئياً 🟢</span></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-5">يرجى التوجه لمقر الكلية خلال 48 ساعة لتسليم أصل شهادة الثانوية وسداد القسط الأول لتثبيت المقعد.</p>
+                    <button onclick="window.print()" class="px-6 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs"><i class="fa-solid fa-print ml-1"></i> طباعة إشعار التقديم</button>
+                </div>
+
+                <div class="max-w-3xl mx-auto glass-card rounded-3xl p-8 border border-slate-200 shadow-lg">
+                    <form id="admission-form" onsubmit="handleAdmissionSubmit(event)" class="space-y-6">
+                        <div class="space-y-4">
+                            <h4 class="text-sm font-black text-blue-700 pb-2 border-b border-blue-50">1. البيانات الشخصية</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الرباعي واللقب *</label>
+                                    <input type="text" id="app-name" required placeholder="أحمد علي محمد" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">الجنس *</label>
+                                    <select id="app-gender" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs bg-white">
+                                        <option value="ذكر">ذكر</option>
+                                        <option value="أنثى">أنثى</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهوية الوطنية / الجواز *</label>
+                                    <input type="text" id="app-nid" required placeholder="10 أرقام" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف / الواتساب *</label>
+                                    <input type="tel" id="app-phone" required placeholder="771234567" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 pt-2">
+                            <h4 class="text-sm font-black text-blue-700 pb-2 border-b border-blue-50">2. مؤهل الثانوية العامة</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">مسار الثانوية *</label>
+                                    <select id="app-branch" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs bg-white">
+                                        <option value="علمي">القسم العلمي (متاح لكل التخصصات)</option>
+                                        <option value="أدبي">القسم الأدبي (إدارة، لغات، محاسبة)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">رقم الجلوس في الثانوية *</label>
+                                    <input type="text" id="app-seat" required placeholder="88124" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">معدل / نسبة الثانوية العامة (%) *</label>
+                                    <input type="number" step="0.1" min="50" max="100" id="app-pct" required placeholder="مثال: 85.5" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">القسم المطلوب *</label>
+                                    <select id="app-dept" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs bg-white">
+                                        <option value="تمريض">قسم التمريض (علمي - 75%+)</option>
+                                        <option value="طب ومختبرات">قسم طب ومختبرات (علمي - 78%+)</option>
+                                        <option value="تقنية معلومات">قسم تقنية معلومات (علمي - 70%+)</option>
+                                        <option value="إدارة">قسم إدارة الأعمال (مشترك - 60%+)</option>
+                                        <option value="لغات إنجليزي">قسم لغات وترجمة إنجليزي (مشترك - 62%+)</option>
+                                        <option value="نظم معلومات محاسبية">قسم نظم معلومات محاسبية (مشترك - 65%+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black text-sm shadow-lg transition-all">
+                            إرسال طلب التقديم وتثبيت المقعد
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 3. عرض نتائج القبول ======================= -->
+        <section id="tab-admission-results" class="tab-content hidden py-12">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">المفاضلة والقبول الفوري</span>
+                    <h2 class="text-3xl font-black text-slate-900 mt-2">الاستعلام عن نتائج القبول</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-1">ابحث برقم الاستمارة (مثل: OFQ-2026-1001) أو رقم الجلوس أو اسمك.</p>
+                </div>
+
+                <div class="max-w-xl mx-auto glass-card rounded-2xl p-3 border border-slate-200 mb-8 flex gap-2">
+                    <input type="text" id="adm-search-input" placeholder="رقم الاستمارة (OFQ-2026-1001) أو رقم الجلوس..." class="flex-1 px-4 py-3 text-xs border-0 focus:outline-none">
+                    <button onclick="searchAdmissionResult()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">
+                        استعلام الآن
+                    </button>
+                </div>
+
+                <!-- نتيجة البحث -->
+                <div id="adm-result-box" class="hidden max-w-2xl mx-auto glass-card rounded-3xl p-8 border border-slate-200 shadow-xl mb-10">
+                    <!-- ديناميكي -->
+                </div>
+
+                <!-- قائمة الشفافية للمقبولين -->
+                <div class="glass-card rounded-3xl p-6 border border-slate-200">
+                    <h3 class="font-black text-base text-slate-900 mb-4 pb-2 border-b border-slate-100">آخر الطلبات والمقبولين في الكلية</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 font-bold">
+                                    <th class="p-3">رقم الاستمارة</th>
+                                    <th class="p-3">اسم الطالب</th>
+                                    <th class="p-3">القسم</th>
+                                    <th class="p-3">النسبة</th>
+                                    <th class="p-3">الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adm-table-body" class="divide-y divide-slate-100">
+                                <!-- ديناميكي -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 4. الأقسام الأدبية والعلمية ======================= -->
+        <section id="tab-departments" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="bg-cyan-100 text-cyan-800 text-xs px-3.5 py-1.5 rounded-full font-bold">الأقسام العلمية والأدبية</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2">مجالات كلية الأفق الستة</h2>
+                    <p class="text-slate-600 text-sm mt-2">تمريض، طب ومختبرات، تقنية معلومات، إدارة أعمال، لغات إنجليزي، ونظم معلومات محاسبية.</p>
+                </div>
+
+                <div class="space-y-8" id="depts-full-list">
+                    <!-- تُبنى ديناميكياً -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 5. التقويم الدراسي ======================= -->
+        <section id="tab-calendar" class="tab-content hidden py-12">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3.5 py-1.5 rounded-full font-bold">العام الجامعي 2026/2027</span>
+                    <h2 class="text-3xl font-black text-slate-900 mt-2">التقويم الدراسي الأكاديمي</h2>
+                    <p class="text-slate-600 text-sm mt-1">مواعيد التقديم، بداية الدراسة، الامتحانات النصفية والنهائية، والأنشطة.</p>
+                </div>
+
+                <div class="space-y-4" id="calendar-timeline">
+                    <!-- ديناميكي -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 6. نتائج الامتحانات ======================= -->
+        <section id="tab-exam-results" class="tab-content hidden py-12">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-bold">بوابة الكنترول والنتائج</span>
+                    <h2 class="text-3xl font-black text-slate-900 mt-2">الاستعلام عن نتائج الامتحانات</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-1">أدخل رقم القيد الجامعي (مثال: STD-2026-101) لعرض كشف الدرجات الرسمي والمعدل.</p>
+                </div>
+
+                <div class="max-w-xl mx-auto glass-card rounded-2xl p-3 border border-slate-200 mb-8 flex gap-2">
+                    <input type="text" id="exam-search-input" value="STD-2026-101" placeholder="رقم القيد (STD-2026-101 أو STD-2026-102)..." class="flex-1 px-4 py-3 text-xs border-0 focus:outline-none">
+                    <button onclick="searchExamResults()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">
+                        عرض الكشف
+                    </button>
+                </div>
+
+                <!-- كشف الدرجات الرسمي -->
+                <div id="exam-sheet" class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-300 shadow-2xl bg-white">
+                    <!-- ديناميكي -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 7. النشاط الطلابي ======================= -->
+        <section id="tab-activities" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-3.5 py-1.5 rounded-full font-bold">روح المبادرة والبطولات</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2">النشاط الطلابي والحياة الجامعية</h2>
+                    <p class="text-slate-600 text-sm mt-2">مبادرات إنسانية، دورات خماسيات كرة القدم، معارض الأيام الثقافية، والحملات الصحية.</p>
+                </div>
+
+                <!-- بطولة كأس الأفق لكرة القدم -->
+                <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-8 shadow-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl font-black"><i class="fa-solid fa-trophy"></i></span>
+                            <div>
+                                <h3 class="text-2xl font-black">بطولة كأس الأفق لكرة القدم 2026</h3>
+                                <p class="text-amber-200 text-xs">دورة خماسيات كرة القدم السنوية بين كليات وأقسام الأفق</p>
+                            </div>
+                        </div>
+                        <span class="bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold animate-pulse">مباشر ⚽</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="football-matches-grid">
+                        <!-- ديناميكي -->
+                    </div>
+                </div>
+
+                <!-- الأنشطة والمبادرات -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="activities-cards-grid">
+                    <!-- ديناميكي -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 8. الاستعلامات والأسئلة الشائعة ======================= -->
+        <section id="tab-inquiries" class="tab-content hidden py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-bold">خدمة الطلاب والردود الفورية</span>
+                    <h2 class="text-3xl font-black text-slate-900 mt-2">نظام استعلامات كلية الأفق</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-1">إجابات شاملة على كل ما يتعلق بشروط القبول، الرسوم، والوثائق المطلوبة.</p>
+                </div>
+
+                <div class="space-y-3" id="faq-accordion-list">
+                    <!-- ديناميكي -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 9. الشكاوى الطلابية والمقترحات ======================= -->
+        <section id="tab-complaints" class="tab-content hidden py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold">صوتك مسموع ورأيك يبني الكلية</span>
+                    <h2 class="text-3xl font-black text-slate-900 mt-2">الشكاوى الطلابية والمقترحات التطويرية</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-1">شاركنا أفكارك وملاحظاتك لترقية البيئة الجامعية مع إمكانية الإرسال السري وتتبع التذكرة.</p>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 border border-slate-200 shadow-md">
+                    <form onsubmit="handleComplaintSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">نوع التذكرة *</label>
+                                <select id="comp-type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs bg-white">
+                                    <option value="مقترح تطويري">💡 مقترح تطويري</option>
+                                    <option value="شكوى طلابية">⚠️ شكوى طلابية</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">التصنيف *</label>
+                                <select id="comp-cat" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs bg-white">
+                                    <option value="أكاديمي وتدريسي">أكاديمي وتدريسي</option>
+                                    <option value="مرافق وخدمات">مرافق وقاعات ومعامل</option>
+                                    <option value="جداول وامتحانات">جداول وامتحانات</option>
+                                    <option value="أنشطة طلابية">أنشطة وبطولات</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان الموضوع *</label>
+                            <input type="text" id="comp-title" required placeholder="عنوان الملاحظة أو الفكرة..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">التفاصيل الكاملة *</label>
+                            <textarea id="comp-content" rows="3" required placeholder="اشرح بالتفصيل واقترح الحلول المناسبة..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs"></textarea>
+                        </div>
+
+                        <div class="flex items-center gap-2 p-3 rounded-xl bg-blue-50 text-xs font-bold text-blue-900">
+                            <input type="checkbox" id="comp-anon" class="h-4 w-4">
+                            <label for="comp-anon">إرسال كمقترح/شكوى سرية مجهولة الهوية 🔒</label>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs shadow-md">
+                            إرسال التذكرة الآن
+                        </button>
+                    </form>
+                </div>
+
+                <!-- تذاكر تم حلها -->
+                <div class="glass-card rounded-3xl p-6 border border-slate-200">
+                    <h4 class="font-black text-base text-slate-900 mb-4 pb-2 border-b border-slate-100">لوحة الشفافية: مقترحات تم تطبيقها من العمادة</h4>
+                    <div class="space-y-3" id="resolved-complaints-list">
+                        <!-- ديناميكي -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 10. بوابات الدخول المنفصلة ======================= -->
+        <section id="tab-portal" class="tab-content hidden py-12">
+            <div class="max-w-xl mx-auto px-4">
+                <div class="glass-card rounded-3xl p-8 border border-slate-200 shadow-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg">🎓</div>
+                        <h3 class="text-2xl font-black text-slate-900">بوابات الدخول الموحدة</h3>
+                        <p class="text-xs text-slate-500 mt-1">اختر البوابة للدخول إلى لوحة التحكم المخصصة</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <button onclick="loginDemo('student')" class="p-4 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-right">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-user-graduate"></i></div>
+                            <h4 class="font-black text-sm text-slate-900">بوابة الطالب</h4>
+                            <p class="text-[11px] text-blue-600 mt-0.5">std202601</p>
+                        </button>
+
+                        <button onclick="loginDemo('admin')" class="p-4 rounded-2xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-right">
+                            <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center text-lg mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h4 class="font-black text-sm text-slate-900">إدارة الكلية</h4>
+                            <p class="text-[11px] text-purple-600 mt-0.5">admin (د. منصور)</p>
+                        </button>
+                    </div>
+
+                    <div id="demo-logged-view" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+                        <div class="font-bold text-slate-800">حالة الجلسة: <span id="current-session-label" class="text-blue-600">طالب (أحمد علي السقاف)</span></div>
+                        <p class="text-slate-500">تم تسجيل دخولك بنجاح، يمكنك الانتقال لصفحة نتائج الامتحانات أو التقديمات بحسابك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="bg-slate-900 text-slate-300 mt-20 border-t border-slate-800">
+        <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-800 py-6 px-4">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-white text-center md:text-right">
+                <div class="flex items-center gap-3">
+                    <span class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <div>
+                        <h4 class="font-extrabold text-base sm:text-lg">كلية الأفق.. حيث تُبنى الأحلام وتتحقق الطموحات!</h4>
+                        <p class="text-blue-100 text-xs">بيئة تعليمية متطورة وكوادر متميزة في خدمة مستقبلك المهني.</p>
+                    </div>
+                </div>
+                <button onclick="showTab('admissions')" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm">
+                    التحق بنا الآن ←
+                </button>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500">
+            <p>© 2026 كلية الأفق الأكاديمية (Al-Ufuq College). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- المساعد الذكي العائم (Chatbot) -->
+    <button onclick="toggleChat()" class="chat-widget-btn bg-gradient-to-tr from-blue-600 to-indigo-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition-transform">
+        <i class="fa-solid fa-comments"></i>
+    </button>
+
+    <div id="chat-popup" class="chat-box-popup bg-white border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white p-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <h5 class="font-bold text-sm">مساعد الأفق الذكي 🎓</h5>
+                    <span class="text-[11px] text-emerald-300">متاح للإجابة فوراً</span>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="text-white/80 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+            <div class="flex justify-end">
+                <div class="bg-white text-slate-800 p-3 rounded-2xl rounded-tl-sm shadow-sm border border-slate-200 max-w-[85%] leading-relaxed">
+                    مرحباً بك يا بطل! 🌟 أنا مساعد الأفق الذكي، كيف أساعدك في القبول أو التخصصات أو النتائج؟
+                </div>
+            </div>
+        </div>
+        <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+            <input type="text" id="chat-input" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="اكتب سؤالك (تمريض، شروط، رسوم...)" class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none">
+            <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-700 text-white w-9 h-9 rounded-xl flex items-center justify-center"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+        </div>
+    </div>
+
+    <!-- بيانات وسكربت التطبيق التفاعلي -->
+    <script>
+        // قاعدة البيانات المحلية في المتصفح
+        const COLLEGE_DATA = {
+            departments: [
+                { id: 1, name: "تمريض", en: "Nursing", track: "علمي", icon: "fa-user-nurse", color: "#0284c7", min: 75, degree: "بكالوريوس (4 سنوات + امتياز)", desc: "تأهيل كوادر تمريضية وطنية بأعلى المعايير السريرية والإنسانية لتقديم الرعاية الطبية الفائقة بمستشفيات رائدة." },
+                { id: 2, name: "طب ومختبرات", en: "Medical Laboratories", track: "علمي", icon: "fa-microscope", color: "#0d9488", min: 78, degree: "بكالوريوس (4 سنوات)", desc: "إعداد أخصائيي تشخيص مخبري ذوي مهارة عالية في تحليل العينات الطبية والتقنيات البيولوجية والوراثية الدقيقة." },
+                { id: 3, name: "تقنية معلومات", en: "Information Technology", track: "علمي", icon: "fa-laptop-code", color: "#2563eb", min: 70, degree: "بكالوريوس (4 سنوات)", desc: "بناء مهندسي ومطوري تكنولوجيا ورواد في البرمجة والذكاء الاصطناعي والأمن السيبراني وشبكات الحاسوب والسحابة." },
+                { id: 4, name: "إدارة الأعمال", en: "Business Administration", track: "مشترك", icon: "fa-chart-pie", color: "#d97706", min: 60, degree: "بكالوريوس (4 سنوات)", desc: "صناعة قادة الأعمال ورواد المشاريع القادرين على قيادة المؤسسات بنجاح وإدارة الموارد البشرية والتسويق الرقمي." },
+                { id: 5, name: "لغات وترجمة - إنجليزي", en: "English Language & Translation", track: "مشترك", icon: "fa-language", color: "#7c3aed", min: 62, degree: "بكالوريوس (4 سنوات)", desc: "تمكين الطلاب من إتقان اللغة الإنجليزية كلغة تواصل عالمية ومهارات الترجمة الفورية والتحريرية الدبلوماسية." },
+                { id: 6, name: "نظم معلومات محاسبية", en: "Accounting Info Systems", track: "مشترك", icon: "fa-calculator", color: "#059669", min: 65, degree: "بكالوريوس (4 سنوات)", desc: "دمج علم المحاسبة والمالية بأحدث المنظومات والبرمجيات السحابية ERP وتقنيات الفنتك (FinTech) المتطورة." }
+            ],
+            applications: [
+                { no: "OFQ-2026-1001", name: "عبدالرحمن باوزير", dept: "تقنية معلومات", pct: 88.5, status: "مقبول نهائياً", note: "تهانينا! يرجى التوجه لإدارة القبول لاستلام البطاقة الجامعية." },
+                { no: "OFQ-2026-1002", name: "فاطمة الحداد", dept: "تمريض", pct: 91.2, status: "مقبول نهائياً", note: "مبارك القبول في قسم التمريض مع منحة تفوق بنسبة 20%." },
+                { no: "OFQ-2026-1003", name: "يوسف الصلوي", dept: "طب ومختبرات", pct: 84.0, status: "مقبول مبدئياً", note: "المقابلة الشخصية محددة بتاريخ 22 أكتوبر." },
+                { no: "OFQ-2026-1004", name: "منى القاضي", dept: "لغات وترجمة - إنجليزي", pct: 78.4, status: "مقبول نهائياً", note: "تم اعتماد القبول بنجاح، نتمنى لك التوفيق." },
+                { no: "OFQ-2026-1005", name: "ماجد الشميري", dept: "نظم معلومات محاسبية", pct: 73.0, status: "مقبول مبدئياً", note: "يرجى تسليم أصل شهادة الثانوية." }
+            ],
+            calendar: [
+                { title: "فتح باب التقديم والقبول الإلكتروني للعام الجديد", date: "01 أغسطس - 25 أكتوبر", cat: "تسجيل وقبول", desc: "بدء استقبال طلبات الطلاب الجدد عبر البوابة الإلكترونية لجميع التخصصات." },
+                { title: "إعلان نتائج القبول وبدء المقابلات الشخصية", date: "15 أكتوبر - 30 أكتوبر", cat: "تسجيل وقبول", desc: "فترة مراجعة الوثائق وسداد الرسوم وإصدار البطاقات الجامعية." },
+                { title: "انطلاق العام الدراسي وبداية المحاضرات الرسمية", date: "01 نوفمبر 2026", cat: "دراسة", desc: "اليوم التعريفي للطلبة المستجدين وتدشين أولى المحاضرات لجميع المستويات." },
+                { title: "انطلاق بطولة كأس الأفق السنوية لخماسيات كرة القدم", date: "20 نوفمبر - 05 ديسمبر", cat: "أنشطة", desc: "دورة كروية حماسية تتنافس فيها فرق أقسام الكلية الستة." },
+                { title: "امتحانات منتصف الفصل الدراسي (الميدتيرم)", date: "20 ديسمبر - 31 ديسمبر", cat: "امتحانات", desc: "فترة الاختبارات النصفية لجميع الأقسام العلمية والأدبية." },
+                { title: "الامتحانات النهائية للفصل الدراسي الأول", date: "01 فبراير - 18 فبراير", cat: "امتحانات", desc: "فترة الاختبارات التحريرية والمعملية الشاملة للكنترول المركزي." }
+            ],
+            examResults: {
+                "STD-2026-101": {
+                    name: "أحمد علي السقاف", dept: "تقنية معلومات", gpa: "3.85 / 4.00", status: "ناجح بتفوق (مرتبة الشرف)",
+                    courses: [
+                        { code: "IT-201", name: "برمجة الويب وتطبيقات السحابة", h: 3, mid: 38, fin: 56, tot: 94, grade: "A+" },
+                        { code: "IT-202", name: "أمن الشبكات وأنظمة الحماية", h: 3, mid: 35, fin: 54, tot: 89, grade: "A" },
+                        { code: "IT-203", name: "إدارة قواعد البيانات المتقدمة", h: 3, mid: 37, fin: 55, tot: 92, grade: "A" },
+                        { code: "IT-204", name: "الذكاء الاصطناعي والتعلم الآلي", h: 3, mid: 34, fin: 52, tot: 86, grade: "B+" },
+                        { code: "IT-205", name: "اللغة الإنجليزية التخصصية", h: 2, mid: 28, fin: 68, tot: 96, grade: "A+" }
+                    ]
+                },
+                "STD-2026-102": {
+                    name: "سارة محمد اليافعي", dept: "تمريض", gpa: "3.90 / 4.00", status: "ناجحة بمرتبة الشرف الأولى",
+                    courses: [
+                        { code: "NUR-101", name: "أساسيات التمريض السريري", h: 4, mid: 38, fin: 58, tot: 96, grade: "A+" },
+                        { code: "NUR-102", name: "تشريح ووظائف الأعضاء II", h: 3, mid: 36, fin: 53, tot: 89, grade: "A" },
+                        { code: "NUR-103", name: "علم الأدوية التمريضي", h: 3, mid: 35, fin: 52, tot: 87, grade: "B+" }
+                    ]
+                }
+            },
+            matches: [
+                { a: "نجوم تقنية المعلومات", b: "أطباء المختبرات", sA: 3, sB: 2, stage: "المجموعة A", note: "مباراة حماسية انتهت بهدف قاتل لتقنية المعلومات." },
+                { a: "فرسان التمريض", b: "رواد إدارة الأعمال", sA: 1, sB: 1, stage: "المجموعة B", note: "تعادل إيجابي مثير مع تألق حراس المرمى." },
+                { a: "أبطال نظم المحاسبة", b: "نسور لغات إنجليزي", sA: 4, sB: 1, stage: "المجموعة A", note: "هاتريك رائع لكابتن فريق المحاسبة." }
+            ],
+            activities: [
+                { title: 'مبادرة "أفق العطاء" الخيرية', cat: "مبادرات طلابية", date: "28 أكتوبر", loc: "الحرم المركزي", desc: "توزيع أكثر من 500 حقيبة مدرسية متكاملة على الأطفال المحتاجين لغرس روح التكافل والتطوع." },
+                { title: 'نادي المطورين "Horizon Dev Club"', cat: "مبادرات طلابية", date: "08 نوفمبر", loc: "مختبر البرمجة 2", desc: "مجتمع تقني يتبادل فيه الطلاب أحدث لغات البرمجة والذكاء الاصطناعي وبناء التطبيقات الذكية." },
+                { title: 'مهرجان اليوم الثقافي الجامعي', cat: "الأيام الثقافية", date: "25 نوفمبر", loc: "القاعة الكبرى", desc: "أمسيات شعرية، عروض فنون تشكيلية، وأجنحة تعريفية بالتراث اليمني والعربي وعروض مسرحية هادفة." },
+                { title: 'الحملة الميدانية لفحص الضغط والسكري', cat: "الحملات التوعوية", date: "02 ديسمبر", loc: "بهو الكلية والعيادة", desc: "فحوصات مجانية فورية للدم والضغط بإشراف طلبة قسمي التمريض والطب والمختبرات." },
+                { title: 'أسبوع التوعية بالأمن السيبراني', cat: "الحملات التوعوية", date: "18 ديسمبر", loc: "قاعة السيمنار", desc: "ورش عمل شبابية لحماية الحسابات الشخصية ومكافحة الاحتيال وتأمين المعاملات المالية." },
+                { title: 'المشاركة في مؤتمر الابتكار الوطني', cat: "المشاركات الطلابية", date: "12 يناير", loc: "مركز المؤتمرات", desc: "مشاركة وفد كلية الأفق بـ 4 مشاريع تخرج نوعية تنافس في مسار الحلول التكنولوجية والمشاريع." }
+            ],
+            faqs: [
+                { q: "ما هي شروط القبول والتسجيل للعام الجديد؟", a: "الحصول على شهادة الثانوية العامة بالقسم العلمي للتخصصات الطبية والتقنية بنسب لا تقل عن (تمريض 75%، مختبرات 78%، تقنية معلومات 70%)، أو بالقسمين العلمي والأدبي لتخصصات الإدارة 60% واللغات 62% ونظم المحاسبة 65%." },
+                { q: "ما هي الوثائق المطلوبة لإتمام القبول؟", a: "أصل استمارة الثانوية + 4 صور طبق الأصل، صورة الهوية أو الجواز، 6 صور شمسية 4x6، واستمارة التقديم المطبوعة من الموقع وسند الرسوم." },
+                { q: "هل توجد منح وخصومات للطلبة المتفوقين؟", a: "نعم! خصم 30% لأوائل المحافظات، 20% للحاصلين على 90% فأعلى، و15% خصم الأخوة، بالإضافة لمنح فخرية كل فصل دراسي للمتفوقين." }
+            ]
+        };
+
+        // تبديل التبويبات بسلاسة
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('block');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const mobile = document.getElementById('mobile-menu');
+            if (mobile) mobile.classList.add('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // تشغيل العبارات التشجيعية
+        const quotes = [
+            "طموحك يبدأ من هنا نحو آفاق لا حدود لها 🚀",
+            "اصنع مستقبلك بشغف وتميّز 🌟",
+            "لكل مجتهد نصيب.. وأفقك يتسع لكل أحلامك 🎓",
+            "التعليم رحلة ملهمة لصناعة القادة ✨",
+            "كن فخوراً بخطواتك.. أنت تصنع الفرق 💡"
+        ];
+        let qIdx = 0;
+        setInterval(() => {
+            qIdx = (qIdx + 1) % quotes.length;
+            const el = document.getElementById('rotating-quote');
+            if (el) {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.innerText = quotes[qIdx];
+                    el.style.opacity = '1';
+                }, 300);
+            }
+        }, 4000);
+
+        // بناء بطاقات الأقسام
+        function renderDepartments() {
+            const homeGrid = document.getElementById('home-depts-grid');
+            const fullList = document.getElementById('depts-full-list');
+            if (!homeGrid || !fullList) return;
+
+            homeGrid.innerHTML = '';
+            fullList.innerHTML = '';
+
+            COLLEGE_DATA.departments.forEach(d => {
+                // للرئيسية
+                homeGrid.innerHTML += `
+                    <div class="glass-card rounded-3xl p-6 border border-slate-200 text-right flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl text-white shadow-md" style="background-color:${d.color}">
+                                    <i class="fa-solid ${d.icon}"></i>
+                                </span>
+                                <span class="text-xs font-bold px-2.5 py-1 rounded-full ${d.track === 'علمي' ? 'bg-sky-100 text-sky-800' : 'bg-amber-100 text-amber-800'}">
+                                    ${d.track}
+                                </span>
+                            </div>
+                            <h3 class="font-black text-lg text-slate-900 mb-1">قسم ${d.name}</h3>
+                            <div class="text-[11px] text-slate-400 font-bold mb-3">${d.en}</div>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">${d.desc}</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+                            <span class="text-blue-600">الحد الأدنى: ${d.min}%</span>
+                            <button onclick="showTab('admissions'); document.getElementById('app-dept').value='${d.name}';" class="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700">قدّم الآن</button>
+                        </div>
+                    </div>
+                `;
+
+                // للقائمة الكاملة
+                fullList.innerHTML += `
+                    <div class="glass-card rounded-3xl p-8 border border-slate-200 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-3 h-full" style="background-color:${d.color}"></div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                            <div class="lg:col-span-8 space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <span class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg" style="background-color:${d.color}">
+                                        <i class="fa-solid ${d.icon}"></i>
+                                    </span>
+                                    <div>
+                                        <h3 class="text-2xl font-black text-slate-900">قسم ${d.name}</h3>
+                                        <div class="text-xs text-slate-400 font-bold">${d.en} - ${d.degree}</div>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-slate-700 leading-relaxed">${d.desc}</p>
+                            </div>
+                            <div class="lg:col-span-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 text-xs space-y-3 text-right">
+                                <div class="flex justify-between border-b pb-2"><span>المسار:</span><b>${d.track}</b></div>
+                                <div class="flex justify-between border-b pb-2"><span>النسبة المطلوبة:</span><b class="text-blue-600 text-sm">${d.min}%+</b></div>
+                                <button onclick="showTab('admissions'); document.getElementById('app-dept').value='${d.name}';" class="w-full py-3 rounded-xl bg-blue-600 text-white font-black text-xs hover:bg-blue-700 shadow-md">التقديم في هذا القسم</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // معالجة استمارة التقديم
+        function handleAdmissionSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('app-name').value;
+            const dept = document.getElementById('app-dept').value;
+            const pct = document.getElementById('app-pct').value;
+            const no = 'OFQ-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+            COLLEGE_DATA.applications.unshift({
+                no: no, name: name, dept: dept, pct: parseFloat(pct), status: "مقبول مبدئياً",
+                note: "تهانينا! يرجى الحضور لمقر الكلية لاستكمال إجراءات القيد وسداد الرسوم."
+            });
+
+            document.getElementById('succ-app-no').innerText = no;
+            document.getElementById('succ-app-name').innerText = name;
+            document.getElementById('succ-app-dept').innerText = dept;
+            document.getElementById('admission-success-card').classList.remove('hidden');
+            renderAdmissionTable();
+            showToast("تم تسجيل طلبك بنجاح! رقم الاستمارة: " + no);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // جدول المقبولين
+        function renderAdmissionTable() {
+            const tb = document.getElementById('adm-table-body');
+            if (!tb) return;
+            tb.innerHTML = '';
+            COLLEGE_DATA.applications.forEach(a => {
+                tb.innerHTML += `
+                    <tr class="hover:bg-blue-50/30">
+                        <td class="p-3 font-mono font-black text-blue-600">${a.no}</td>
+                        <td class="p-3 font-bold text-slate-900">${a.name}</td>
+                        <td class="p-3 text-slate-700">${a.dept}</td>
+                        <td class="p-3 font-black">${a.pct}%</td>
+                        <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-bold">${a.status}</span></td>
+                    </tr>
+                `;
+            });
+        }
+
+        // استعلام نتيجة القبول
+        function searchAdmissionResult() {
+            const query = document.getElementById('adm-search-input').value.trim();
+            const box = document.getElementById('adm-result-box');
+            if (!query) return;
+
+            const found = COLLEGE_DATA.applications.find(a => a.no.includes(query) || a.name.includes(query));
+            box.classList.remove('hidden');
+            if (found) {
+                box.innerHTML = `
+                    <div class="text-center pb-4 border-b">
+                        <span class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 inline-flex items-center justify-center text-2xl mb-2">✓</span>
+                        <h4 class="text-xl font-black text-slate-900">مبارك! تم قبولك في كلية الأفق 🎉</h4>
+                        <span class="text-xs text-blue-600 font-mono font-bold">${found.no}</span>
+                    </div>
+                    <div class="my-4 grid grid-cols-2 gap-3 text-xs bg-slate-50 p-4 rounded-2xl border">
+                        <div>الاسم: <b>${found.name}</b></div>
+                        <div>القسم: <b>${found.dept}</b></div>
+                        <div>النسبة: <b>${found.pct}%</b></div>
+                        <div>الحالة: <b class="text-emerald-700">${found.status}</b></div>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-4 bg-blue-50 p-3 rounded-xl border border-blue-200">${found.note}</p>
+                    <button onclick="window.print()" class="w-full py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs"><i class="fa-solid fa-print ml-1"></i> طباعة إشعار القبول الرسمي</button>
+                `;
+            } else {
+                box.innerHTML = `
+                    <div class="text-center py-6 text-xs text-rose-600 font-bold">
+                        لم يتم العثور على طلب مطابق لرقم "${query}". تأكد من الرقم أو قدم طلباً جديداً.
+                    </div>
+                `;
+            }
+        }
+
+        // التقويم الأكاديمي
+        function renderCalendar() {
+            const list = document.getElementById('calendar-timeline');
+            if (!list) return;
+            list.innerHTML = '';
+            COLLEGE_DATA.calendar.forEach(c => {
+                list.innerHTML += `
+                    <div class="glass-card rounded-2xl p-5 border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">${c.cat}</span>
+                            <h4 class="font-extrabold text-slate-900 text-base mt-1">${c.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1">${c.desc}</p>
+                        </div>
+                        <div class="font-black text-blue-700 text-xs bg-slate-100 px-3 py-1.5 rounded-xl whitespace-nowrap">
+                            <i class="fa-regular fa-calendar ml-1"></i> ${c.date}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // كشف الدرجات
+        function searchExamResults() {
+            const id = document.getElementById('exam-search-input').value.trim();
+            const sheet = document.getElementById('exam-sheet');
+            const data = COLLEGE_DATA.examResults[id] || COLLEGE_DATA.examResults["STD-2026-101"];
+
+            sheet.innerHTML = `
+                <div class="flex flex-col sm:flex-row justify-between items-center pb-6 border-b-2 border-slate-900 gap-4 text-center sm:text-right">
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-900 text-white flex items-center justify-center text-3xl font-black">🎓</div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-900">كلية الأفق الأكاديمية</h3>
+                            <p class="text-xs text-slate-500 font-bold">الإدارة العامة للكنترول والامتحانات - كشف درجات رسمي</p>
+                        </div>
+                    </div>
+                    <div class="text-xs font-mono text-slate-600">
+                        <div>رقم القيد: <b class="text-blue-700">${id}</b></div>
+                        <div>العام الجامعي: 2025/2026</div>
+                    </div>
+                </div>
+
+                <div class="my-5 grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-2xl border text-xs">
+                    <div>اسم الطالب: <b>${data.name}</b></div>
+                    <div>القسم: <b>${data.dept}</b></div>
+                    <div>المعدل التراكمي: <b class="text-blue-700 font-black">${data.gpa}</b></div>
+                    <div>الحالة: <b class="text-emerald-700 font-black">${data.status}</b></div>
+                </div>
+
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-center text-xs border border-slate-200">
+                        <thead>
+                            <tr class="bg-slate-800 text-white font-bold">
+                                <th class="p-2.5 border">رمز المقرر</th>
+                                <th class="p-2.5 border text-right">اسم المقرر</th>
+                                <th class="p-2.5 border">الساعات</th>
+                                <th class="p-2.5 border">الأعمال (40)</th>
+                                <th class="p-2.5 border">النهائي (60)</th>
+                                <th class="p-2.5 border">المجموع</th>
+                                <th class="p-2.5 border">التقدير</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            ${data.courses.map(c => `
+                                <tr>
+                                    <td class="p-2.5 border font-mono">${c.code}</td>
+                                    <td class="p-2.5 border text-right font-bold">${c.name}</td>
+                                    <td class="p-2.5 border">${c.h}</td>
+                                    <td class="p-2.5 border">${c.mid}</td>
+                                    <td class="p-2.5 border">${c.fin}</td>
+                                    <td class="p-2.5 border font-black text-blue-700">${c.tot}%</td>
+                                    <td class="p-2.5 border font-black"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">${c.grade}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center no-print">
+                    <button onclick="window.print()" class="px-8 py-3 rounded-xl bg-slate-900 text-white font-bold text-xs"><i class="fa-solid fa-print ml-1"></i> طباعة كشف الدرجات الرسمي</button>
+                </div>
+            `;
+        }
+
+        // الأنشطة والبطولات
+        function renderActivities() {
+            const matchesGrid = document.getElementById('football-matches-grid');
+            const actGrid = document.getElementById('activities-cards-grid');
+            if (!matchesGrid || !actGrid) return;
+
+            matchesGrid.innerHTML = '';
+            COLLEGE_DATA.matches.forEach(m => {
+                matchesGrid.innerHTML += `
+                    <div class="bg-white/10 rounded-2xl p-4 border border-white/10 text-xs">
+                        <span class="text-amber-300 font-bold block mb-2">${m.stage}</span>
+                        <div class="flex justify-between items-center font-bold my-2 text-sm">
+                            <span class="truncate">${m.a}</span>
+                            <span class="bg-black/50 px-2.5 py-1 rounded-lg text-amber-300 font-mono text-xs">${m.sA} - ${m.sB}</span>
+                            <span class="truncate text-left">${m.b}</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300 mt-2">${m.note}</p>
+                    </div>
+                `;
+            });
+
+            actGrid.innerHTML = '';
+            COLLEGE_DATA.activities.forEach(a => {
+                actGrid.innerHTML += `
+                    <div class="glass-card rounded-3xl p-6 border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3 text-xs">
+                                <span class="bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full font-bold">${a.cat}</span>
+                                <span class="text-slate-400 font-bold"><i class="fa-regular fa-calendar ml-1"></i>${a.date}</span>
+                            </div>
+                            <h4 class="font-black text-slate-900 text-base mb-2">${a.title}</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">${a.desc}</p>
+                        </div>
+                        <button onclick="joinActivity('${a.title}')" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">سجل في هذا النشاط</button>
+                    </div>
+                `;
+            });
+        }
+
+        function joinActivity(title) {
+            showToast("تم تسجيل طلب انضمامك في: " + title + " 🎉");
+        }
+
+        // الأسئلة الشائعة
+        function renderFAQs() {
+            const list = document.getElementById('faq-accordion-list');
+            if (!list) return;
+            list.innerHTML = '';
+            COLLEGE_DATA.faqs.forEach(f => {
+                list.innerHTML += `
+                    <details class="glass-card rounded-2xl p-5 border border-slate-200 group [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-sm text-slate-900 group-hover:text-blue-600">
+                            <span>${f.q}</span>
+                            <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p class="mt-3 pt-3 border-t text-xs text-slate-600 leading-relaxed">${f.a}</p>
+                    </details>
+                `;
+            });
+        }
+
+        // الشكاوى والمقترحات
+        function handleComplaintSubmit(e) {
+            e.preventDefault();
+            const t = document.getElementById('comp-title').value;
+            const no = 'TKT-2026-' + Math.floor(100 + Math.random() * 900);
+            showToast("تم إرسال تذكرتك بنجاح برقم: " + no + "، وسترد العمادة خلال 24 ساعة.");
+            document.getElementById('comp-title').value = '';
+            document.getElementById('comp-content').value = '';
+        }
+
+        function renderResolvedComplaints() {
+            const list = document.getElementById('resolved-complaints-list');
+            if (!list) return;
+            list.innerHTML = `
+                <div class="p-4 rounded-2xl bg-slate-50 border text-xs space-y-1">
+                    <div class="flex justify-between font-bold"><span class="text-slate-900">تمديد ساعات المكتبة والمختبرات</span><span class="text-emerald-700">تم التنفيذ 🟢</span></div>
+                    <p class="text-slate-500">رد العمادة: تمت الموافقة على فتح قاعات الاستذكار حتى 7:00 مساءً طوال فترة الامتحانات.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border text-xs space-y-1">
+                    <div class="flex justify-between font-bold"><span class="text-slate-900">تعديل موعد محاضرة علم الأدوية</span><span class="text-emerald-700">تم التنفيذ 🟢</span></div>
+                    <p class="text-slate-500">رد العمادة: تم نقل المحاضرة إلى الساعة 11:00 لتفادي أي تعارض بالجداول.</p>
+                </div>
+            `;
+        }
+
+        // تجربة تسجيل الدخول
+        function loginDemo(role) {
+            const label = document.getElementById('current-session-label');
+            if (role === 'admin') {
+                label.innerText = "مدير النظام (د. منصور الأحمدي - صلاحيات كاملة)";
+                label.className = "text-purple-700 font-black";
+                showToast("مرحباً بك يا دكتور منصور! تم فتح صلاحيات الإدارة.");
+            } else {
+                label.innerText = "طالب (أحمد علي السقاف - تقنية معلومات)";
+                label.className = "text-blue-700 font-black";
+                showToast("أهلاً بك يا أحمد في بوابتك الأكاديمية!");
+            }
+        }
+
+        // المساعد الذكي Chatbot
+        function toggleChat() {
+            const p = document.getElementById('chat-popup');
+            p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function sendChatMessage() {
+            const inp = document.getElementById('chat-input');
+            const q = inp.value.trim();
+            if (!q) return;
+
+            const box = document.getElementById('chat-messages');
+            box.innerHTML += `<div class="flex justify-start mb-2"><div class="bg-blue-600 text-white p-2.5 rounded-2xl text-xs max-w-[85%]">${q}</div></div>`;
+            inp.value = '';
+
+            setTimeout(() => {
+                let reply = "أهلاً بك في كلية الأفق! 🌟 يسعدني إجابتك عن شروط القبول والتسجيل، الرسوم، التخصصات، ونتائج الامتحانات.";
+                const lower = q.toLowerCase();
+                if (lower.includes('تمريض')) reply = "💉 <b>قسم التمريض</b> يقبل خريجي الثانوية (علمي) بنسبة 75%+ ومدة الدراسة 4 سنوات وتدريب سريري ممتاز.";
+                else if (lower.includes('مختبر')) reply = "🔬 <b>قسم الطب والمختبرات</b> يقبل العلمي بنسبة 78%+، ويحتوي على أحدث أجهزة التحليل والتشخيص الطبي.";
+                else if (lower.includes('تقنية') || lower.includes('it') || lower.includes('حاسوب')) reply = "💻 <b>قسم تقنية المعلومات</b> يقبل العلمي بنسبة 70%، ويشمل البرمجة والذكاء الاصطناعي والأمن السيبراني.";
+                else if (lower.includes('إدارة') || lower.includes('ادارة')) reply = "📊 <b>قسم إدارة الأعمال</b> يقبل العلمي والأدبي بنسبة 60%+ ويؤهل لريادة الأعمال والتسويق.";
+                else if (lower.includes('انجليزي') || lower.includes('لغات')) reply = "🌐 <b>قسم لغات وترجمة إنجليزي</b> يقبل العلمي والأدبي بنسبة 62%+ مع التركيز على الترجمة الفورية والطلاقة.";
+                else if (lower.includes('محاسب')) reply = "📈 <b>قسم نظم معلومات محاسبية</b> يقبل العلمي والأدبي بنسبة 65%+ ويجمع بين المحاسبة وأنظمة السحابة والفنتك.";
+                else if (lower.includes('رسوم') || lower.includes('منح')) reply = "💰 رسوم الكلية ميسرة ومناسبة مع أقساط مريحة، ومنح 30% لأوائل المحافظات و20% للمتفوقين.";
+                else if (lower.includes('امتحان') || lower.includes('نتيجة')) reply = "🎓 يمكنك الاستعلام عن درجاتك فوراً بإدخال رقم قيدك في تبويب <b>نتائج الامتحانات</b>.";
+
+                box.innerHTML += `<div class="flex justify-end mb-2"><div class="bg-white text-slate-800 p-2.5 rounded-2xl text-xs border border-slate-200 max-w-[85%] leading-relaxed">${reply}</div></div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 500);
+        }
+
+        function showToast(msg) {
+            const c = document.getElementById('toast-container');
+            const t = document.createElement('div');
+            t.className = "bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 animate-bounce";
+            t.innerText = msg;
+            c.appendChild(t);
+            setTimeout(() => t.remove(), 4000);
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDepartments();
+            renderAdmissionTable();
+            renderCalendar();
+            renderActivities();
+            renderFAQs();
+            renderResolvedComplaints();
+            searchExamResults();
+        });
+    </script>
+</body>
+</html>
